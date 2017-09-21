@@ -49,13 +49,14 @@ subroutine sync_simulate_misalignment(Set, nrow, ncol, suffixOutString, PeriodRe
     integer :: jits(nj)
     data jits(1:nj) /0, 1, 5, 10, 50, 100/
     integer :: drifts(nd)
-    data drifts(1:nd) /0, 10, 30, 60, 100, 300/
+    data drifts(1:nd) /0, 10, 30, 60, 90, 180/
     real(kind = dbl) :: SyncStats(5, nj+nd)
     real(kind = dbl) :: SetBak(nrow, ncol)
 
 
     SetBak = Set
     if (RPsetup%Sync%default_simulation) then
+        print*, 'Performing default synching simulation'
         !> Simulate default jits
         do i = 1, nj
             call simulate_jitter(Set, nrow, ncol, jits(i))
@@ -167,7 +168,7 @@ subroutine simulate_drift(Set, nrow, ncol, drift)
             if (dts(i) >= pts(ii-1) .and. dts(i) < pts(ii)) then
                 next = ii
                 off = (dts(i) - pts(ii-1)) &
-                    / dfloat(1000000) * nint(Metadata%ac_freq)
+                    / 1E6 * nint(Metadata%ac_freq)
                 tts(i) = interpolate(Set(ii-1, ts), Set(ii, ts), off)
                 exit
             end if

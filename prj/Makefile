@@ -168,6 +168,9 @@ parse_ini_file.o: \
 basic_stats.o: \
 	basic_stats.f90 \
 	m_common_global_var.o
+sync_simulate_misalignment.o: \
+	sync_simulate_misalignment.f90 \
+	m_rp_global_var.o
 timelag_handle.o: \
 	timelag_handle.f90 \
 	m_rp_global_var.o

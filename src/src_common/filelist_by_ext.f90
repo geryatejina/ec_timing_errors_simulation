@@ -77,8 +77,8 @@ subroutine FileListByExt(DirIn, Ext, MatchTemplate, HardMatch, Template, &
                 // Ext(1:len_trim(Ext)) // ' > ' // '"' // trim(adjustl(TmpDir)) &
                 // 'flist.tmp" ' // comm_err_redirect
         case('mac')
-            comm = 'find "' // DirIn(1:len_trim(DirIn)) // '" -iname *' &
-                // Ext(1:len_trim(Ext)) // ' > ' // '"' // trim(adjustl(TmpDir)) &
+            comm = 'find "' // DirIn(1:len_trim(DirIn)) // '" -iname "*' &
+                // Ext(1:len_trim(Ext)) // '" > ' // '"' // trim(adjustl(TmpDir)) &
                 // 'flist.tmp" ' // comm_err_redirect
     end select
     dir_status = system(comm)
@@ -89,6 +89,7 @@ subroutine FileListByExt(DirIn, Ext, MatchTemplate, HardMatch, Template, &
 
     open(udf, file = trim(adjustl(TmpDir)) // 'flist2.tmp', &
         iostat = open_status)
+
     !> control on temporary file
     if (open_status /= 0) then
         close(udf)

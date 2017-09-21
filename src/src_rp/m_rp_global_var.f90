@@ -602,6 +602,7 @@ module m_rp_global_var
          SCTags(98)%Label / 'to_subset'        / &
 
          SCTags(100)%Label  / 'sync_simulate_jitter'  / &
-         SCTags(101)%Label  / 'sync_simulate_drift'  /
+         SCTags(101)%Label  / 'sync_simulate_drift'  / &
+         SCTags(102)%Label  / 'sync_default_simulation'  /
 
 end module m_rp_global_var

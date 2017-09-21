@@ -1706,12 +1706,11 @@ program EddyproRP
                     AddUserStatsHeader = .false.
             end if
 
-
             !> ===== 1.5 SIMULATE TIME MISALIGNMENTS ===========================
-            if (RPSetup%Sync%simulate) &
+            if (RPSetup%Sync%simulate) then
                 call sync_simulate_misalignment(E2Set, size(E2Set, 1), &
                     size(E2Set, 2), suffixOutString, PeriodRecords)
-
+            end if
 
             !> Based on mean value, if sonic (or fast) temperature
             !> is out-ranged, search alternative one.

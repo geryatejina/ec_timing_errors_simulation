@@ -694,8 +694,10 @@ subroutine WriteVariablesRP()
     RPsetup%Sync%jitter = nint(SNTags(400)%value)
     RPsetup%Sync%drift = nint(SNTags(401)%value)
 
-    RPsetup%Sync%default_simulation = &
-        RPsetup%Sync%jitter < 0 .or. RPsetup%Sync%drift < 0
+    ! RPsetup%Sync%default_simulation = &
+    !     RPsetup%Sync%jitter < 0 .or. RPsetup%Sync%drift < 0
+
+    RPsetup%Sync%default_simulation = SCTags(102)%value == '1'
 
     !> adjust paths
     call AdjDir(Dir%main_in, slash)
