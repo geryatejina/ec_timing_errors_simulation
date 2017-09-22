@@ -46,17 +46,21 @@ subroutine sync_simulate_misalignment(Set, nrow, ncol, suffixOutString, PeriodRe
     integer :: i
     integer, parameter :: nj = 6
     integer, parameter :: nd = 6
+    integer, parameter :: nl = 9
     integer :: jits(nj)
     data jits(1:nj) /0, 1, 5, 10, 50, 100/
     integer :: drifts(nd)
     data drifts(1:nd) /0, 10, 30, 60, 90, 180/
-    real(kind = dbl) :: SyncStats(5, nj+nd)
+    integer :: lags(nl)
+    data lags(1:nl) /-4, -3, -2, -1, 0, 1, 2, 3, 4/
+
+    real(kind = dbl) :: SyncStats(5, nj+nd+nl)
     real(kind = dbl) :: SetBak(nrow, ncol)
 
 
     SetBak = Set
     if (RPsetup%Sync%default_simulation) then
-        print*, 'Performing default synching simulation'
+        print*, ' Performing default synching simulation'
         !> Simulate default jits
         do i = 1, nj
             call simulate_jitter(Set, nrow, ncol, jits(i))
@@ -71,6 +75,14 @@ subroutine sync_simulate_misalignment(Set, nrow, ncol, suffixOutString, PeriodRe
             call get_sync_stats(SyncStats(:, nj+i), size(SyncStats, 2))
             Set = SetBak
         end do
+        !> Simulate default time-lags
+        do i = 1, nl
+            call simulate_timelag(Set, nrow, ncol, lags(i))
+            call BasicStats(Set, nrow, ncol, 1, .false.)
+            call get_sync_stats(SyncStats(:, nj+nd+i), size(SyncStats, 2))
+            Set = SetBak
+        end do
+        !> Write out stats
         call write_sync_stats(usync, SyncStats, size(SyncStats, 1), &
             size(SyncStats, 2), suffixOutString, PeriodRecords)
         return
@@ -86,6 +98,12 @@ subroutine sync_simulate_misalignment(Set, nrow, ncol, suffixOutString, PeriodRe
     if (RPsetup%Sync%simulate_drift) then
         !> Apply clock drift to sonic temperature
         call simulate_drift(Set, nrow, ncol, RPsetup%Sync%drift)
+    end if
+
+    !> ===== SIMULATE TIME-LAGS ================================================
+    if (RPsetup%Sync%simulate_timelag) then
+        !> Apply time-lags to sonic temperature
+        call simulate_timelag(Set, nrow, ncol, RPsetup%Sync%timelag)
     end if
 
     !> ===== CALCULATE AND OUTPUT BASIC STATS ==================================
@@ -176,6 +194,27 @@ subroutine simulate_drift(Set, nrow, ncol, drift)
     end do
     Set(:, ts) = tts
 end subroutine simulate_drift
+
+
+!*******************************************************************************
+!*******************************************************************************
+
+subroutine simulate_timelag(Set, nrow, ncol, lag)
+    use m_rp_global_var
+    implicit none
+    !> in/out variables
+    integer, intent(in) :: nrow, ncol
+    integer, intent(in) :: lag
+    real(kind = dbl), intent(inout) :: Set(nrow, ncol)
+    
+    if (lag > 0) then
+        Set(1:nrow-lag, ts) = Set(lag+1:nrow, ts) 
+        Set(nrow-lag+1:nrow, ts) = error
+    else if (lag < 0) then
+        Set(abs(lag)+1:nrow, ts) = Set(1:nrow-abs(lag), ts) 
+        Set(1:abs(lag), ts) = error
+    end if
+end subroutine simulate_timelag
 
 
 !*******************************************************************************

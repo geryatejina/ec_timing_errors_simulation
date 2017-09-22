@@ -549,7 +549,7 @@ subroutine InitOutFiles_rp()
                 &[mmol+1m-3],[' // char(181) // 'mol+1mol_a-1],[' // char(181) // 'mol+1mol_d-1],[s],[1=default],&
                 &[mmol+1m-3],[' // char(181) // 'mol+1mol_a-1],[' // char(181) // 'mol+1mol_d-1],[s],[1=default],&
                 &[K],[K],[Pa],[kg+1m-3],[J+1kg-1K-1],[m+3mol-1],[mm],[kg+1m-3],[Pa],[Pa],[kg+1kg-1],[%],[Pa],[K],&
-                &[m+1s-1],[m+1s-1],[m+1s-1],[m+1s-1],[m+1s-1],[m+1s-1],[m+1s-1],[m+1s-1],[deg_from_north],[°],[°],[°],&
+                &[m+1s-1],[m+1s-1],[m+1s-1],[m+1s-1],[m+1s-1],[m+1s-1],[m+1s-1],[m+1s-1],[deg_from_north],[ï¿½],[ï¿½],[ï¿½],&
                 &[m+1s-1],[m+2s-2],[m],[#],[#],[K],[0=KJ/1=KM/2=HS],[m],[m],[m],[m],[m],[m],[m],&
                 &[kg+1m-1s-2],[#],[W+1m-2],[#],[W+1m-2],[#],[' // char(181) // 'mol+1s-1m-2],[#],[mmol+1s-1m-2],[#],&
                 &[' // char(181) // 'mol+1s-1m-2],[#],[' // char(181) // 'mol+1s-1m-2],[#],&
@@ -1078,10 +1078,22 @@ subroutine InitOutFiles_rp()
                 &drift_30,drift_30,drift_30,drift_30,drift_30,&
                 &drift_60,drift_60,drift_60,drift_60,drift_60,&
                 &drift_100,drift_100,drift_100,drift_100,drift_100,&
-                &drift_300,drift_300,drift_300,drift_300,drift_300'
+                &drift_300,drift_300,drift_300,drift_300,drift_300,&
+                &timelag_n4,timelag_n4,timelag_n4,timelag_n4,timelag_n4,&
+                &timelag_n3,timelag_n3,timelag_n3,timelag_n3,timelag_n3,&
+                &timelag_n2,timelag_n2,timelag_n2,timelag_n2,timelag_n2,&
+                &timelag_n1,timelag_n1,timelag_n1,timelag_n1,timelag_n1,&
+                &timelag_0,timelag_0,timelag_0,timelag_0,timelag_0,&
+                &timelag_p1,timelag_p1,timelag_p1,timelag_p1,timelag_p1,&
+                &timelag_p2,timelag_p2,timelag_p2,timelag_p2,timelag_p2,&
+                &timelag_p3,timelag_p3,timelag_p3,timelag_p3,timelag_p3,&
+                &timelag_p4,timelag_p4,timelag_p4,timelag_p4,timelag_p4'
 
             write(usync, '(a)') &
                 'filename,date,time,doy,records,&
+                &w,t,varw,vart,covwt,w,t,varw,vart,covwt,w,t,varw,vart,covwt,&
+                &w,t,varw,vart,covwt,w,t,varw,vart,covwt,w,t,varw,vart,covwt,&
+                &w,t,varw,vart,covwt,w,t,varw,vart,covwt,w,t,varw,vart,covwt,&
                 &w,t,varw,vart,covwt,w,t,varw,vart,covwt,w,t,varw,vart,covwt,&
                 &w,t,varw,vart,covwt,w,t,varw,vart,covwt,w,t,varw,vart,covwt,&
                 &w,t,varw,vart,covwt,w,t,varw,vart,covwt,w,t,varw,vart,covwt,&

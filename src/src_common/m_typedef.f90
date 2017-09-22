@@ -816,8 +816,10 @@ module m_typedef
     type :: SyncType
         logical :: simulate_jitter
         logical :: simulate_drift
+        logical :: simulate_timelag
         logical :: simulate
         logical :: default_simulation
+        integer :: timelag
         integer :: jitter
         integer :: drift
     end type SyncType

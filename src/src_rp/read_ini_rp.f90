@@ -688,16 +688,15 @@ subroutine WriteVariablesRP()
     !Synch simulation
     RPsetup%Sync%simulate_jitter = SCTags(100)%value == '1'
     RPsetup%Sync%simulate_drift = SCTags(101)%value == '1'
+    RPsetup%Sync%simulate_timelag = SCTags(102)%value == '1'
     RPsetup%Sync%simulate = RPsetup%Sync%simulate_jitter .or. &
-        RPsetup%Sync%simulate_drift
+        RPsetup%Sync%simulate_drift .or. RPSetup%Sync%simulate_timelag
 
     RPsetup%Sync%jitter = nint(SNTags(400)%value)
     RPsetup%Sync%drift = nint(SNTags(401)%value)
+    RPsetup%Sync%timelag = nint(SNTags(402)%value)
 
-    ! RPsetup%Sync%default_simulation = &
-    !     RPsetup%Sync%jitter < 0 .or. RPsetup%Sync%drift < 0
-
-    RPsetup%Sync%default_simulation = SCTags(102)%value == '1'
+    RPsetup%Sync%default_simulation = SCTags(103)%value == '1'
 
     !> adjust paths
     call AdjDir(Dir%main_in, slash)

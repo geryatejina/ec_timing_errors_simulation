@@ -500,7 +500,8 @@ module m_rp_global_var
          SNTags(371)%Label  / 'drift_tempsens_c'        / &
 
          SNTags(400)%Label  / 'sync_jitter'            / &
-         SNTags(401)%Label  / 'sync_drift'             /
+         SNTags(401)%Label  / 'sync_jitter'            / &
+         SNTags(402)%Label  / 'sync_timelag'           /
 
     data SCTags(1)%Label  / 'data_path'    / &
          SCTags(2)%Label  / 'out_path'     / &
@@ -601,8 +602,9 @@ module m_rp_global_var
          SCTags(97)%Label / 'pf_subset'        / &
          SCTags(98)%Label / 'to_subset'        / &
 
-         SCTags(100)%Label  / 'sync_simulate_jitter'  / &
-         SCTags(101)%Label  / 'sync_simulate_drift'  / &
-         SCTags(102)%Label  / 'sync_default_simulation'  /
+         SCTags(100)%Label  / 'sync_simulate_jitter'     / &
+         SCTags(101)%Label  / 'sync_simulate_drift'      / &
+         SCTags(102)%Label  / 'sync_simulate_timelag'    / &
+         SCTags(103)%Label  / 'sync_default_simulation'  /
 
 end module m_rp_global_var
