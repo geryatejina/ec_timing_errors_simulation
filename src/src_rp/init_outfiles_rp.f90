@@ -1077,8 +1077,8 @@ subroutine InitOutFiles_rp()
                 &drift_10,drift_10,drift_10,drift_10,drift_10,&
                 &drift_30,drift_30,drift_30,drift_30,drift_30,&
                 &drift_60,drift_60,drift_60,drift_60,drift_60,&
-                &drift_100,drift_100,drift_100,drift_100,drift_100,&
-                &drift_300,drift_300,drift_300,drift_300,drift_300,&
+                &drift_90,drift_90,drift_90,drift_90,drift_90,&
+                &drift_180,drift_180,drift_180,drift_180,drift_180,&
                 &timelag_n4,timelag_n4,timelag_n4,timelag_n4,timelag_n4,&
                 &timelag_n3,timelag_n3,timelag_n3,timelag_n3,timelag_n3,&
                 &timelag_n2,timelag_n2,timelag_n2,timelag_n2,timelag_n2,&

@@ -822,6 +822,7 @@ module m_typedef
         integer :: timelag
         integer :: jitter
         integer :: drift
+        integer :: covariate_with
     end type SyncType
 
     type :: RPsetupType

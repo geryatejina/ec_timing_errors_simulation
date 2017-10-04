@@ -695,6 +695,7 @@ subroutine WriteVariablesRP()
     RPsetup%Sync%jitter = nint(SNTags(400)%value)
     RPsetup%Sync%drift = nint(SNTags(401)%value)
     RPsetup%Sync%timelag = nint(SNTags(402)%value)
+    RPsetup%Sync%covariate_with = nint(SNTags(403)%value)
 
     RPsetup%Sync%default_simulation = SCTags(103)%value == '1'
 

@@ -52,17 +52,19 @@ subroutine sync_simulate_misalignment(Set, nrow, ncol, suffixOutString, PeriodRe
     integer :: drifts(nd)
     data drifts(1:nd) /0, 10, 30, 60, 90, 180/
     integer :: lags(nl)
+    integer :: var
     data lags(1:nl) /-4, -3, -2, -1, 0, 1, 2, 3, 4/
 
     real(kind = dbl) :: SyncStats(5, nj+nd+nl)
     real(kind = dbl) :: SetBak(nrow, ncol)
 
-
+    var = RPSetup%sync%covariate_with
     SetBak = Set
     if (RPsetup%Sync%default_simulation) then
         print*, ' Performing default synching simulation'
         !> Simulate default jits
         do i = 1, nj
+            Set(:, ts) = Set(:, var)
             call simulate_jitter(Set, nrow, ncol, jits(i))
             call BasicStats(Set, nrow, ncol, 1, .false.)
             call get_sync_stats(SyncStats(:, i), size(SyncStats, 2))
@@ -70,6 +72,7 @@ subroutine sync_simulate_misalignment(Set, nrow, ncol, suffixOutString, PeriodRe
         end do
         !> Simulate default drifts
         do i = 1, nd
+            Set(:, ts) = Set(:, var)
             call simulate_drift(Set, nrow, ncol, drifts(i))
             call BasicStats(Set, nrow, ncol, 1, .false.)
             call get_sync_stats(SyncStats(:, nj+i), size(SyncStats, 2))
@@ -77,6 +80,7 @@ subroutine sync_simulate_misalignment(Set, nrow, ncol, suffixOutString, PeriodRe
         end do
         !> Simulate default time-lags
         do i = 1, nl
+            Set(:, ts) = Set(:, var)
             call simulate_timelag(Set, nrow, ncol, lags(i))
             call BasicStats(Set, nrow, ncol, 1, .false.)
             call get_sync_stats(SyncStats(:, nj+nd+i), size(SyncStats, 2))

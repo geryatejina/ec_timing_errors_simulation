@@ -501,7 +501,8 @@ module m_rp_global_var
 
          SNTags(400)%Label  / 'sync_jitter'            / &
          SNTags(401)%Label  / 'sync_jitter'            / &
-         SNTags(402)%Label  / 'sync_timelag'           /
+         SNTags(402)%Label  / 'sync_timelag'           / &
+         SNTags(403)%Label  / 'sync_covariate_with'    /
 
     data SCTags(1)%Label  / 'data_path'    / &
          SCTags(2)%Label  / 'out_path'     / &
