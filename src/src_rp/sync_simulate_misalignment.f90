@@ -44,13 +44,13 @@ subroutine sync_simulate_misalignment(Set, nrow, ncol, suffixOutString, PeriodRe
     real(kind = dbl), intent(inout) :: Set(nrow, ncol)
     !> local variable
     integer :: i
-    integer, parameter :: nj = 6
-    integer, parameter :: nd = 6
+    integer, parameter :: nj = 7
+    integer, parameter :: nd = 9
     integer, parameter :: nl = 9
     integer :: jits(nj)
-    data jits(1:nj) /0, 1, 5, 10, 50, 100/
+    data jits(1:nj) /0, 1, 5, 10, 50, 100, 200/
     integer :: drifts(nd)
-    data drifts(1:nd) /0, 10, 30, 60, 90, 180/
+    data drifts(1:nd) /0, 10, 30, 60, 90, 120, 150, 180, 360/
     integer :: lags(nl)
     integer :: var
     data lags(1:nl) /-4, -3, -2, -1, 0, 1, 2, 3, 4/

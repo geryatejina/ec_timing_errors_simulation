@@ -1067,18 +1067,22 @@ subroutine InitOutFiles_rp()
         if (RPsetup%Sync%default_simulation) then
             write(usync, '(a)') &
                 'info,info,info,info,info,&
-                &jit_0,jit_0,jit_0,jit_0,jit_0,&
-                &jit_1,jit_1,jit_1,jit_1,jit_1,&
-                &jit_5,jit_5,jit_5,jit_5,jit_5,&
-                &jit_10,jit_10,jit_10,jit_10,jit_10,&
-                &jit_50,jit_50,jit_50,jit_50,jit_50,&
-                &jit_100,jit_100,jit_100,jit_100,jit_100,&
-                &drift_0,drift_0,drift_0,drift_0,drift_0,&
-                &drift_10,drift_10,drift_10,drift_10,drift_10,&
-                &drift_30,drift_30,drift_30,drift_30,drift_30,&
-                &drift_60,drift_60,drift_60,drift_60,drift_60,&
-                &drift_90,drift_90,drift_90,drift_90,drift_90,&
-                &drift_180,drift_180,drift_180,drift_180,drift_180,&
+                &rand_0,rand_0,rand_0,rand_0,rand_0,&
+                &rand_1,rand_1,rand_1,rand_1,rand_1,&
+                &rand_5,rand_5,rand_5,rand_5,rand_5,&
+                &rand_10,rand_10,rand_10,rand_10,rand_10,&
+                &rand_50,rand_50,rand_50,rand_50,rand_50,&
+                &rand_100,rand_100,rand_100,rand_100,rand_100,&
+                &rand_200,rand_200,rand_200,rand_200,rand_200,&
+                &syst_0,syst_0,syst_0,syst_0,syst_0,&
+                &syst_10,syst_10,syst_10,syst_10,syst_10,&
+                &syst_30,syst_30,syst_30,syst_30,syst_30,&
+                &syst_60,syst_60,syst_60,syst_60,syst_60,&
+                &syst_90,syst_90,syst_90,syst_90,syst_90,&
+                &syst_120,syst_120,syst_120,syst_120,syst_120,&
+                &syst_150,syst_150,syst_150,syst_150,syst_150,&
+                &syst_180,syst_180,syst_180,syst_180,syst_180,&
+                &syst_360,syst_360,syst_360,syst_360,syst_360,&
                 &timelag_n4,timelag_n4,timelag_n4,timelag_n4,timelag_n4,&
                 &timelag_n3,timelag_n3,timelag_n3,timelag_n3,timelag_n3,&
                 &timelag_n2,timelag_n2,timelag_n2,timelag_n2,timelag_n2,&
@@ -1097,7 +1101,9 @@ subroutine InitOutFiles_rp()
                 &w,t,varw,vart,covwt,w,t,varw,vart,covwt,w,t,varw,vart,covwt,&
                 &w,t,varw,vart,covwt,w,t,varw,vart,covwt,w,t,varw,vart,covwt,&
                 &w,t,varw,vart,covwt,w,t,varw,vart,covwt,w,t,varw,vart,covwt,&
-                &w,t,varw,vart,covwt,w,t,varw,vart,covwt,w,t,varw,vart,covwt'
+                &w,t,varw,vart,covwt,w,t,varw,vart,covwt,w,t,varw,vart,covwt,&
+                &w,t,varw,vart,covwt,w,t,varw,vart,covwt,w,t,varw,vart,covwt,&
+                &w,t,varw,vart,covwt'
         else
             write(usync, '(a)') trim(adjustl(statsHead))
         end if
